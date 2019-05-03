@@ -106,7 +106,7 @@ LONG WINAPI WndProc(HWND hwnd, UINT Message, WPARAM wparam, LPARAM lparam)
 				if ((text_length == 0 || e.name.find(search_text) != std::string::npos) && is_date_in_range(date_from, date_to, e.time))
 				{
 					strftime(date, 20, "%b %d %Y %H:%M", &(e.time));
-					output_text += e.name + "\r\t" + date + "\r\n";
+					output_text += e.name + "\r\t" + date + "\r\t" + std::to_string(e.total)+ "\r\t" + std::to_string(e.left) +"\r\n";
 				}
 			}
 			SetWindowTextA(OutputControl, output_text.c_str());
@@ -155,7 +155,7 @@ LONG WINAPI WndProc(HWND hwnd, UINT Message, WPARAM wparam, LPARAM lparam)
 			for (const auto& e : ag)
 			{
 				strftime(date, 20, "%b %d %Y %H:%M", &(e.time));
-				output_text += e.name + "\r\t" + date + "\r\n";
+				output_text += e.name + "\r\t" + date + "\r\t" + std::to_string(e.total) + "\r\t" + std::to_string(e.left) + "\r\n";
 			}
 			SetWindowTextA(OutputControl, output_text.c_str());
 		}
